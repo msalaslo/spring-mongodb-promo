@@ -1,6 +1,7 @@
 package com.msl.mongo.promo.entity;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
@@ -19,10 +20,10 @@ public class Producto {
 	public String name;
 	
 //	@Relations(edges = ProductoPromocion.class, lazy = true)
-	private Collection<Promocion> promociones;
+	private List<Promocion> promociones;
 	
 //	@Relations(edges = ProductoMarca.class, lazy = true)
-	private Collection<Marca> marcas;
+	private List<Marca> marcas;
 	
 	public Producto(String referencia, String name) {
 		super();
@@ -54,19 +55,19 @@ public class Producto {
 		this.name = name;
 	}
 
-	public Collection<Promocion> getPromociones() {
+	public List<Promocion> getPromociones() {
 		return promociones;
 	}
 
-	public void setPromociones(Collection<Promocion> promociones) {
+	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
 	
-	public Collection<Marca> getMarcas() {
+	public List<Marca> getMarcas() {
 		return marcas;
 	}
 
-	public void setMarcas(Collection<Marca> marcas) {
+	public void setMarcas(List<Marca> marcas) {
 		this.marcas = marcas;
 	}
 	

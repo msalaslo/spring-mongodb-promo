@@ -1,6 +1,6 @@
 package com.msl.mongo.promo.entity;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
@@ -19,7 +19,9 @@ public class Marca {
 	private String name; 
 			
 //	@Relations(edges = MarcaPromocion.class, lazy = true)
-	public Collection<Promocion> promociones;
+	public List<Promocion> promociones;
+	
+	public List<Familia> familias;
 	
 	public Marca(String cmarmuma, String name) {
 		super();
@@ -35,11 +37,11 @@ public class Marca {
 		this.id = id;
 	}
 
-	public Iterable<Promocion> getPromociones() {
+	public List<Promocion> getPromociones() {
 		return promociones;
 	}
 
-	public void setPromociones(Collection<Promocion> promociones) {
+	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
 
@@ -59,13 +61,22 @@ public class Marca {
 		this.name = name;
 	}
 	
-    @Override
+    public List<Familia> getFamilias() {
+		return familias;
+	}
+
+	public void setFamilias(List<Familia> familias) {
+		this.familias = familias;
+	}
+
+	@Override
     public String toString() {
         return new ToStringBuilder(this).
         		append("id", id).
                 append("cmarmuma", cmarmuma).
                 append("name", name).
                 append("promociones", promociones).
+                append("familias", familias).
         		toString();
     }
 }

@@ -21,14 +21,6 @@ public class ProductoService {
     	return repository.findByReferencia(referencia);
     }
     
-    public Iterable<Promocion> findPromocionesById(String id){
-    	return repository.findPromocionesById(id);
-    }
-    
-    public Iterable<Promocion> findPromocionesByName(String name){
-    	return repository.findPromocionesByName(name);
-    }
-    
     public Iterable<Promocion> findPromocionesByReferencia(String referencia){
     	return repository.findPromocionesByReferencia(referencia);
     }

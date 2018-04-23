@@ -24,10 +24,6 @@ public class MarcaService {
     public Iterable<Promocion> findPromocionesByCmarmuma(String cmarmuma){
     	return repository.findPromocionesByCmarmuma(cmarmuma);
     }
-    
-    public Iterable<Promocion> findPromocionesByName(String name){
-    	return repository.findPromocionesByName(name);
-    }
 
 	public Marca save(Marca product) {
 		return repository.save(product);

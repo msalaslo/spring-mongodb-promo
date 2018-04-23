@@ -13,9 +13,12 @@ public class Familia {
 	@Indexed
 	public String cfamilia;
 	
-	public Familia(String cfamilia) {
+	public String name;
+	
+	public Familia(String cfamilia, String name) {
 		super();
 		this.cfamilia = cfamilia;
+		this.name = name;
 	}
 
 	public String getId() {
@@ -32,6 +35,14 @@ public class Familia {
 
 	public void setCfamilia(String cfamilia) {
 		this.cfamilia = cfamilia;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -38,13 +38,7 @@ public class ProductoController {
         logger.debug("Buscando producto por codpromoci...");
         return service.findByReferencia(referencia);
     }
-	
-	@GetMapping(path = "/findPromocionesById")
-    public Iterable<Promocion> findPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
-        logger.debug("Buscando promociones por id...");
-        return service.findPromocionesById(id);
-    }	
-	
+		
 	@GetMapping(path = "/findPromocionesByReferencia")
     public Iterable<Promocion> findPromocionesByReferencia(@RequestParam(value="referencia", required=false, defaultValue="0") String referencia, Model model) {
         logger.debug("Buscando promociones por referencia...");
