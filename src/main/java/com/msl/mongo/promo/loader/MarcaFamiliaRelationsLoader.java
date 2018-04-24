@@ -1,16 +1,14 @@
 package com.msl.mongo.promo.loader;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.msl.mongo.promo.entity.Marca;
 import com.msl.mongo.promo.entity.Familia;
-import com.msl.mongo.promo.repository.MarcaRepository;
+import com.msl.mongo.promo.entity.Marca;
 import com.msl.mongo.promo.repository.FamiliaRepository;
+import com.msl.mongo.promo.repository.MarcaRepository;
 
 
 @Component
@@ -36,9 +34,7 @@ public class MarcaFamiliaRelationsLoader implements IRepositoryLoader{
 			for (int j = iniSection; j<endSection; j++) {			
 				Marca marca = marcas.get(j);
 //				System.out.println("Asociando el marca " + marca + " a la familia " + familia );
-				List<Familia> listFamilias = new ArrayList<Familia>();
-				listFamilias.add(familia);
-				marca.setFamilias(listFamilias);
+				marca.setFamilia(familia);
 				marcaRepo.save(marca);
 			}
 		}
@@ -47,9 +43,9 @@ public class MarcaFamiliaRelationsLoader implements IRepositoryLoader{
 	public void deleteAll() {
 		List<Marca> marcas = marcaRepo.findAll();
 		for (Marca marca : marcas) {
-			List<Familia> familiasProd = marca.getFamilias();
-			if(familiasProd != null && !familiasProd.isEmpty()) {
-				marca.setFamilias(Collections.<Familia>emptyList());
+			Familia familiasProd = marca.getFamilia();
+			if(familiasProd != null) {
+				marca.setFamilia(null);
 				marcaRepo.save(marca);
 			}
 		}

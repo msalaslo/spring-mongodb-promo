@@ -1,11 +1,11 @@
 package com.msl.mongo.promo.entity;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="producto")
@@ -20,9 +20,11 @@ public class Producto {
 	public String name;
 	
 //	@Relations(edges = ProductoPromocion.class, lazy = true)
+	@DBRef
 	private List<Promocion> promociones;
 	
 //	@Relations(edges = ProductoMarca.class, lazy = true)
+	@DBRef
 	private List<Marca> marcas;
 	
 	public Producto(String referencia, String name) {

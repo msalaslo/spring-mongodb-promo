@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="marca")
@@ -15,13 +16,15 @@ public class Marca {
 		
 	@Indexed
 	private String cmarmuma;
-	
-	private String name; 
-			
+				
 //	@Relations(edges = MarcaPromocion.class, lazy = true)
+	@DBRef
 	public List<Promocion> promociones;
 	
-	public List<Familia> familias;
+	@DBRef
+	public Familia familia;
+	
+	private String name; 
 	
 	public Marca(String cmarmuma, String name) {
 		super();
@@ -61,12 +64,12 @@ public class Marca {
 		this.name = name;
 	}
 	
-    public List<Familia> getFamilias() {
-		return familias;
+    public Familia getFamilia() {
+		return familia;
 	}
 
-	public void setFamilias(List<Familia> familias) {
-		this.familias = familias;
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
 	}
 
 	@Override
@@ -76,7 +79,7 @@ public class Marca {
                 append("cmarmuma", cmarmuma).
                 append("name", name).
                 append("promociones", promociones).
-                append("familias", familias).
+                append("familia", familia).
         		toString();
     }
 }

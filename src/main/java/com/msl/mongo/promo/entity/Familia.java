@@ -1,7 +1,10 @@
 package com.msl.mongo.promo.entity;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="familia")
@@ -12,6 +15,9 @@ public class Familia {
 	
 	@Indexed
 	public String cfamilia;
+	
+	@DBRef
+	public List<Promocion> promociones;
 	
 	public String name;
 	
@@ -43,6 +49,14 @@ public class Familia {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<Promocion> getPromociones() {
+		return promociones;
+	}
+
+	public void setPromociones(List<Promocion> promociones) {
+		this.promociones = promociones;
 	}
 
 }
