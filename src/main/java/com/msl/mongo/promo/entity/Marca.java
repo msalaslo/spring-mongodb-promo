@@ -26,6 +26,10 @@ public class Marca {
 	
 	private String name; 
 	
+	public Marca() {
+		super();
+	}
+	
 	public Marca(String cmarmuma, String name) {
 		super();
 		this.cmarmuma = cmarmuma;
