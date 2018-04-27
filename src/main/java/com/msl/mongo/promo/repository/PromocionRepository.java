@@ -9,5 +9,4 @@ import com.msl.mongo.promo.entity.Promocion;
 public interface PromocionRepository extends MongoRepository<Promocion,String> {
 	public Promocion findByCodpromoci(String codpromoci);
     public List<Promocion> findByCanlvnta(String canlvnta);   
-    public List<Promocion> findAll();
 }

@@ -11,5 +11,4 @@ public interface ProductoRepository extends MongoRepository<Producto,String> {
 	public List<Producto> findByReferencia(String referencia);
 	public Producto findByName(String name);
 	List<Promocion> findPromocionesByReferencia(String referencia);
-	List<Producto> findByPromocionesCodpromoci(String codpromoci);
 }
