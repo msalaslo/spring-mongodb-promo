@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FamiliaLoaderTest {
-
-	public static final int NUM = 10;
 	
 	@Autowired
 	FamiliaLoader loader;
@@ -23,6 +21,6 @@ public class FamiliaLoaderTest {
 
 	@Test
 	public void createFamilias() {
-		loader.load(NUM);
+		loader.load();
 	}
 }

@@ -21,8 +21,9 @@ public class MarcaLoader implements IRepositoryLoader{
 	    repository.deleteAll();
 	}
 
-	public void load(final int numMarcas) {    
-	    List<Marca> createMarcas = createMarcas(numMarcas);
+	@Override
+	public void load() {    
+	    List<Marca> createMarcas = createMarcas(RepositoryConfig.NUM_MARCAS);
 //	    System.out.println(String.format("Save %s additional marcas", numMarcas));
 	    repository.saveAll(createMarcas);
 	}

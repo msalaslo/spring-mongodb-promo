@@ -12,14 +12,15 @@ import com.msl.mongo.promo.repository.MarcaRepository;
 
 
 @Component
-public class MarcaFamiliaRelationsLoader implements IRepositoryLoader{
+public class MarcaFamiliaRelationsLoader implements IRelacionableRepositoryLoader{
 	@Autowired
 	private MarcaRepository marcaRepo;
 	
 	@Autowired
 	private FamiliaRepository familiaRepo;
 		
-	public void shareFamiliasLoad() {
+	@Override
+	public void loadRelaciones() {
 		List<Familia> familias = familiaRepo.findAll();
 		List<Marca> marcas = marcaRepo.findAll();
 		int numMarcas = marcas.size();
@@ -40,7 +41,8 @@ public class MarcaFamiliaRelationsLoader implements IRepositoryLoader{
 		}
 	}
 	
-	public void deleteAll() {
+	@Override
+	public void deleteRelaciones() {
 		List<Marca> marcas = marcaRepo.findAll();
 		for (Marca marca : marcas) {
 			Familia familiasProd = marca.getFamilia();

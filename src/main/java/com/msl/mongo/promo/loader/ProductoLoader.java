@@ -19,18 +19,15 @@ public class ProductoLoader implements IRepositoryLoader{
 
 	@Autowired
 	private ProductoRepository repository;
-	
+		
+	@Override
 	public void deleteAll() {
 	    repository.deleteAll();
 	}
 
-	public void load(final int numProductos) {    
-		saveProductos(numProductos);
-//	    Iterable<Producto> all = repository.findAll();
-//	    long count = StreamSupport.stream(Spliterators.spliteratorUnknownSize(all.iterator(), 0), false).count();
-//	    System.out.println(String.format("A total of %s productos are persisted in the database", count));
-	    
-//	    printAllProductosByName(repository);
+	@Override
+	public void load() {    
+		saveProductos(RepositoryConfig.NUM_PRODUCTOS);
 	}
 	
 	public static void printAllProductosByName(ProductoRepository repository) {

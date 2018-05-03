@@ -16,11 +16,11 @@ public class MarcaPromocionRelationLoaderTest {
 
 	@Before
 	public void setUp() {
-		loader.deleteAll();
+		loader.deletePromociones();
 	}
 
 	@Test
 	public void loadRelations() {
-		loader.sharePromocionesLoad();
+		loader.loadPromociones();
 	}
 }

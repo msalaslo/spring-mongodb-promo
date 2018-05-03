@@ -16,11 +16,11 @@ public class MarcaFamiliaRelationLoaderTest {
 
 	@Before
 	public void setUp() {
-		loader.deleteAll();
+		loader.deleteRelaciones();
 	}
 
 	@Test
 	public void loadRelations() {
-		loader.shareFamiliasLoad();
+		loader.loadRelaciones();
 	}
 }

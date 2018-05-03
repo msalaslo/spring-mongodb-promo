@@ -16,11 +16,11 @@ public class FamiliaPromocionRelationLoaderTest {
 
 	@Before
 	public void setUp() {
-		loader.deleteAll();
+		loader.deletePromociones();
 	}
 
 	@Test
 	public void loadRelations() {
-		loader.shareFamiliasLoad();
+		loader.loadPromociones();
 	}
 }
