@@ -9,10 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductoLoaderTest {
+public class FamiliaLoaderTest {
 	
 	@Autowired
-	ProductoLoader loader;
+	FamiliaLoader loader;
 	
 	@Before
 	public void setUp() {
@@ -20,7 +20,7 @@ public class ProductoLoaderTest {
 	}
 
 	@Test
-	public void createProductos() {
+	public void createFamilias() {
 		loader.load();
 	}
 }

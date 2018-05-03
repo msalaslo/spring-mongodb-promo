@@ -1,7 +1,6 @@
 package com.msl.mongo.promo.loader;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,8 @@ public class PromocionLoader implements IRepositoryLoader{
 	    repository.deleteAll();
 	}
 
-	public void load(final int numPromociones) {    
-	    List<Promocion> promociones = createPromos(numPromociones);
-//	    System.out.println(String.format("Save %s additional promociones", promociones.size()));
+	public void load() {    
+	    List<Promocion> promociones = createPromos(RepositoryConfig.NUM_PROMOS);
 	    repository.saveAll(promociones);
 	     
 //	    Iterable<Promocion> all = repository.findAll();

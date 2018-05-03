@@ -11,10 +11,10 @@ public class Promocion {
 	@Id
     public String id;
 	
-	public String name;
-	
 	@Indexed
 	public String codpromoci;
+	
+	public String name;
 	
 	public String canlvnta;
      

@@ -1,25 +1,34 @@
 package com.msl.mongo.promo.entity;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="marca")
-public class Marca {
+public class Marca implements Promocionable{
 			
 	@Id
 	public String id;
 		
 	@Indexed
 	private String cmarmuma;
+				
+//	@Relations(edges = MarcaPromocion.class, lazy = true)
+	@DBRef
+	public List<Promocion> promociones;
+	
+	@DBRef
+	public Familia familia;
 	
 	private String name; 
-			
-//	@Relations(edges = MarcaPromocion.class, lazy = true)
-	public Collection<Promocion> promociones;
+	
+	public Marca() {
+		super();
+	}
 	
 	public Marca(String cmarmuma, String name) {
 		super();
@@ -35,11 +44,11 @@ public class Marca {
 		this.id = id;
 	}
 
-	public Iterable<Promocion> getPromociones() {
+	public List<Promocion> getPromociones() {
 		return promociones;
 	}
 
-	public void setPromociones(Collection<Promocion> promociones) {
+	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
 
@@ -59,13 +68,22 @@ public class Marca {
 		this.name = name;
 	}
 	
-    @Override
+    public Familia getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
+
+	@Override
     public String toString() {
         return new ToStringBuilder(this).
         		append("id", id).
                 append("cmarmuma", cmarmuma).
                 append("name", name).
                 append("promociones", promociones).
+                append("familia", familia).
         		toString();
     }
 }
