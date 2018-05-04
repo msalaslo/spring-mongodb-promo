@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="marca")
-public class Marca implements Promocionable{
+public class Marca implements Promocionable, Relacionable, RelacionableParent{
 			
 	@Id
 	public String id;
