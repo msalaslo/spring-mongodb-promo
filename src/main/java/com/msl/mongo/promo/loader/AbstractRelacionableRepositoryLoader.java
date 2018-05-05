@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.msl.mongo.promo.entity.Relacionable;
 import com.msl.mongo.promo.entity.RelacionableParent;
-import com.msl.mongo.promo.service.util.Util;
+import com.msl.mongo.promo.entity.EntityUtils;
 
 
 public abstract class AbstractRelacionableRepositoryLoader implements IRelacionableRepositoryLoader{
@@ -16,8 +16,8 @@ public abstract class AbstractRelacionableRepositoryLoader implements IRelaciona
 
 	
 	public void loadRelaciones(Iterable<Relacionable> relacionables, Iterable<RelacionableParent> parents) {
-		int numParents = Util.getSize(parents);
-		int numRelacionables = Util.getSize(relacionables);
+		int numParents = EntityUtils.getSize(parents);
+		int numRelacionables = EntityUtils.getSize(relacionables);
 		Iterator<RelacionableParent> ite = parents.iterator();
 		int section = numRelacionables/numParents;
 		int cont = 1;

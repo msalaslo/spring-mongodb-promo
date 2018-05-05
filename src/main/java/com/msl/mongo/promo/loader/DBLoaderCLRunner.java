@@ -32,7 +32,7 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	ProductoPromocionRelationsLoader productoPromocionLoader;
 	
 	@Autowired
-	MarcaFamiliaRelationsLoader marcaFamiliaLoader;
+	ProductoFamiliaRelationsLoader marcaFamiliaLoader;
 	
 	@Autowired
 	ProductoMarcaRelationsLoader productoMarcaLoader;

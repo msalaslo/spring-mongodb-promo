@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MarcaFamiliaRelationLoaderTest {
 	
 	@Autowired
-	MarcaFamiliaRelationsLoader loader;
+	ProductoFamiliaRelationsLoader loader;
 
 	@Before
 	public void setUp() {

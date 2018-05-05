@@ -27,6 +27,9 @@ public class Producto implements Promocionable{
 	@DBRef
 	private List<Marca> marcas;
 	
+	@DBRef
+	private Familia familia;
+	
 	public Producto(String referencia, String name) {
 		super();
 		this.referencia = referencia;
@@ -73,7 +76,15 @@ public class Producto implements Promocionable{
 		this.marcas = marcas;
 	}
 	
-    @Override
+    public Familia getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
+
+	@Override
     public String toString() {
         return new ToStringBuilder(this).
         		append("PRODUCTO:" + name).
