@@ -2,6 +2,8 @@ package com.msl.mongo.promo.loader;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.msl.mongo.promo.entity.Producto;
@@ -10,6 +12,8 @@ import com.msl.mongo.promo.entity.Promocionable;
 import com.msl.mongo.promo.repository.PromocionRepository;
 
 public abstract class AbstractPromocionableRepositoryLoader implements IPromocionableRepositoryLoader {
+	
+	private static final Logger logger = LoggerFactory.getLogger(AbstractPromocionableRepositoryLoader.class.getName());
 	
 	@Autowired
 	private PromocionRepository promocionRepo;
@@ -32,7 +36,7 @@ public abstract class AbstractPromocionableRepositoryLoader implements IPromocio
 			}else {
 				cont++;
 			}			
-//			System.out.println("Asociando la promocion " + promocion + " al promocionable " + promocionable );
+//			logger.debug("Asociando la promocion " + promocion + " al promocionable " + promocionable );
 			this.save(promocionable, promocion);
 			promoIndex++;
 		}				

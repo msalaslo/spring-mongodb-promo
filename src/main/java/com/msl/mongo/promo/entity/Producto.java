@@ -8,28 +8,28 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="producto")
-public class Producto implements Promocionable{
-	
+@Document(collection = "producto")
+public class Producto implements Promocionable {
+
 	@Id
-    public String id;
-	
+	public String id;
+
 	@Indexed
 	public String referencia;
-	
+
 	public String name;
-	
-//	@Relations(edges = ProductoPromocion.class, lazy = true)
+
+	// @Relations(edges = ProductoPromocion.class, lazy = true)
 	@DBRef
 	private List<Promocion> promociones;
-	
-//	@Relations(edges = ProductoMarca.class, lazy = true)
+
+	// @Relations(edges = ProductoMarca.class, lazy = true)
 	@DBRef
 	private List<Marca> marcas;
-	
+
 	@DBRef
 	private Familia familia;
-	
+
 	public Producto(String referencia, String name) {
 		super();
 		this.referencia = referencia;
@@ -67,7 +67,7 @@ public class Producto implements Promocionable{
 	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
-	
+
 	public List<Marca> getMarcas() {
 		return marcas;
 	}
@@ -75,8 +75,8 @@ public class Producto implements Promocionable{
 	public void setMarcas(List<Marca> marcas) {
 		this.marcas = marcas;
 	}
-	
-    public Familia getFamilia() {
+
+	public Familia getFamilia() {
 		return familia;
 	}
 
@@ -85,13 +85,12 @@ public class Producto implements Promocionable{
 	}
 
 	@Override
-    public String toString() {
-        return new ToStringBuilder(this).
-        		append("PRODUCTO:" + name).
-        		append("id", id).
-                append("referencia", referencia).
-                append("promociones", promociones).
-          	    append("marcas", marcas).
-        		toString();
-    }
+	public String toString() {
+		return new ToStringBuilder(this).
+				append("PRODUCTO:" + name).
+				append("id", id).
+				append("referencia", referencia).
+				append("promociones", promociones).
+				append("marcas", marcas).toString();
+	}
 }

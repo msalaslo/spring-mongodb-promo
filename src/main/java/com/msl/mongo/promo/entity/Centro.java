@@ -1,7 +1,10 @@
 package com.msl.mongo.promo.entity;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="centro")
@@ -13,9 +16,27 @@ public class Centro {
 	@Indexed
 	public String centroo;
 	
-	public Centro(String centroo) {
+	public String name;
+	
+	@DBRef
+	private List<Promocion> promociones;
+
+	
+	public List<Promocion> getPromociones() {
+		return promociones;
+	}
+
+	public void setPromociones(List<Promocion> promociones) {
+		this.promociones = promociones;
+	}
+	
+	@DBRef
+	private Empresa empresa;
+	
+	public Centro(String centroo, String name) {
 		super();
 		this.centroo = centroo;
+		this.name = name;
 	}
 
 	public String getId() {
@@ -32,6 +53,22 @@ public class Centro {
 
 	public void setCentroo(String centroo) {
 		this.centroo = centroo;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 

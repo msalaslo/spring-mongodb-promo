@@ -18,7 +18,6 @@ public class Empresa implements Promocionable{
 	
 	public String name;
 	
-//	@Relations(edges = ProductoPromocion.class, lazy = true)
 	@DBRef
 	private List<Promocion> promociones;
 	
