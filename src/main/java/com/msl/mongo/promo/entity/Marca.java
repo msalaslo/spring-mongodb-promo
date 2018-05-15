@@ -21,9 +21,6 @@ public class Marca implements Promocionable, Relacionable, RelacionableParent{
 	@DBRef
 	public List<Promocion> promociones;
 	
-	@DBRef
-	public Familia familia;
-	
 	private String name; 
 	
 	public Marca() {
@@ -67,14 +64,6 @@ public class Marca implements Promocionable, Relacionable, RelacionableParent{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-    public Familia getFamilia() {
-		return familia;
-	}
-
-	public void setFamilia(Familia familia) {
-		this.familia = familia;
-	}
 
 	@Override
     public String toString() {
@@ -83,7 +72,6 @@ public class Marca implements Promocionable, Relacionable, RelacionableParent{
                 append("cmarmuma", cmarmuma).
                 append("name", name).
                 append("promociones", promociones).
-                append("familia", familia).
         		toString();
     }
 }

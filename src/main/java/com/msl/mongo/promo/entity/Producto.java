@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="producto")
-public class Producto implements Promocionable{
+public class Producto implements Promocionable,Relacionable{
 	
 	@Id
     public String id;
@@ -25,7 +25,7 @@ public class Producto implements Promocionable{
 	
 //	@Relations(edges = ProductoMarca.class, lazy = true)
 	@DBRef
-	private List<Marca> marcas;
+	private Marca marca;
 	
 	@DBRef
 	private Familia familia;
@@ -68,12 +68,12 @@ public class Producto implements Promocionable{
 		this.promociones = promociones;
 	}
 	
-	public List<Marca> getMarcas() {
-		return marcas;
+	public Marca getMarca() {
+		return marca;
 	}
 
-	public void setMarcas(List<Marca> marcas) {
-		this.marcas = marcas;
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 	
     public Familia getFamilia() {
@@ -91,7 +91,7 @@ public class Producto implements Promocionable{
         		append("id", id).
                 append("referencia", referencia).
                 append("promociones", promociones).
-          	    append("marcas", marcas).
+          	    append("marca", marca).
         		toString();
     }
 }

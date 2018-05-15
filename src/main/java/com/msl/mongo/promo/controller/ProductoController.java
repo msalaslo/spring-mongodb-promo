@@ -1,5 +1,7 @@
 package com.msl.mongo.promo.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +24,29 @@ import com.msl.mongo.promo.service.ProductoService;
 @RequestMapping("/producto")
 public class ProductoController {
 	
-	Logger logger = LoggerFactory.getLogger(ProductoController.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(ProductoController.class);
 	
 	@Autowired
 	ProductoService service;
 	
-//	@GetMapping(path = "/findByid")
-//    public Producto findByid(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
-//        logger.debug("Buscando producto por id...");
-//        return service.findByid(id);
-//    }
+	@GetMapping(path = "/findByid")
+    public Optional<Producto> findByid(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
+        logger.debug("Buscando producto por id...");
+        return service.findByid(id);
+    }
 	
 	@GetMapping(path = "/findByReferencia")
     public Iterable<Producto> findByReferencia(@RequestParam(value="referencia", required=false, defaultValue="0") String referencia, Model model) {
         logger.debug("Buscando producto por codpromoci...");
         return service.findByReferencia(referencia);
     }
-		
+	
+	@GetMapping(path = "/findPromocionesById")
+    public Iterable<Promocion> findPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
+        logger.debug("Buscando promociones por id...");
+        return service.findPromocionesById(id);
+    }	
+	
 	@GetMapping(path = "/findPromocionesByReferencia")
     public Iterable<Promocion> findPromocionesByReferencia(@RequestParam(value="referencia", required=false, defaultValue="0") String referencia, Model model) {
         logger.debug("Buscando promociones por referencia...");
@@ -56,4 +64,16 @@ public class ProductoController {
     	Producto savedProduct = this.service.save(producto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
+    
+	@GetMapping(path = "/add")
+    public void add(@RequestParam(value="num", required=false, defaultValue="0") int num) {
+        logger.debug("Añadiendo productos..." + num);
+        service.add(num);
+    }
+	
+	@GetMapping(path = "/findAllPromocionesById")
+    public Optional<Producto> findAllPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
+        logger.debug("Buscando TODAS promociones por id...");
+        return service.findByid(id);
+    }	
 }

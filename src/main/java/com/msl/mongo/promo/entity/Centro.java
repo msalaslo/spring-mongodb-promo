@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="centro")
-public class Centro {
+public class Centro extends AbstractPromocionable implements Relacionable,RelacionableParent {
 	
 	@Id
     public String id;
@@ -13,9 +13,10 @@ public class Centro {
 	@Indexed
 	public String centroo;
 	
-	public Centro(String centroo) {
+	public Centro(String centroo, String name) {
 		super();
 		this.centroo = centroo;
+		super.setName(name);
 	}
 
 	public String getId() {

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="familia")
-public class Familia {
+public class Familia implements Promocionable, RelacionableParent{
 	
 	@Id
     public String id;

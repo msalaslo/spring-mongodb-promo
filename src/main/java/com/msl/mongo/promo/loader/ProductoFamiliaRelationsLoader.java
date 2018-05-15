@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.msl.mongo.promo.entity.EntityUtils;
 import com.msl.mongo.promo.entity.Familia;
 import com.msl.mongo.promo.entity.Producto;
 import com.msl.mongo.promo.entity.Relacionable;
 import com.msl.mongo.promo.entity.RelacionableParent;
-import com.msl.mongo.promo.entity.EntityUtils;
 import com.msl.mongo.promo.repository.FamiliaRepository;
 import com.msl.mongo.promo.repository.ProductoRepository;
 
@@ -24,7 +24,7 @@ public class ProductoFamiliaRelationsLoader extends AbstractRelacionableReposito
 		
 	@Override
 	public void loadRelaciones() {
-		super.loadRelaciones(EntityUtils.toRelacionable(familiaRepo.findAll()), EntityUtils.toRelacionableParent(productoRepo.findAll()));
+		super.loadRelaciones(EntityUtils.toRelacionable(productoRepo.findAll()), EntityUtils.toRelacionableParent(familiaRepo.findAll()));
 	}
 	
 	@Override

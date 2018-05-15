@@ -5,9 +5,9 @@ import java.util.Iterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.msl.mongo.promo.entity.EntityUtils;
 import com.msl.mongo.promo.entity.Relacionable;
 import com.msl.mongo.promo.entity.RelacionableParent;
-import com.msl.mongo.promo.entity.EntityUtils;
 
 
 public abstract class AbstractRelacionableRepositoryLoader implements IRelacionableRepositoryLoader{

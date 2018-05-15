@@ -11,7 +11,10 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	EmpresaLoader empresaLoader;
 	
 	@Autowired
-	MarcaLoader familiaLoader;
+	CentroLoader centroLoader;
+	
+	@Autowired
+	FamiliaLoader familiaLoader;
 
 	@Autowired
 	MarcaLoader marcaLoader;
@@ -26,22 +29,28 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	EmpresaPromocionRelationsLoader empresaPromocionLoader;
 	
 	@Autowired
-	MarcaPromocionRelationsLoader marcaPromocionLoader;
+	CentroPromocionRelationsLoader centroPromocionLoader;
+	
+	@Autowired
+	MarcaPromocionRelationsLoader familiaPromocionLoader;
+	
+	@Autowired
+	FamiliaPromocionRelationsLoader marcaPromocionLoader;
 	
 	@Autowired
 	ProductoPromocionRelationsLoader productoPromocionLoader;
 	
 	@Autowired
-	ProductoFamiliaRelationsLoader marcaFamiliaLoader;
+	ProductoFamiliaRelationsLoader productoFamiliaLoader;
 	
 	@Autowired
 	ProductoMarcaRelationsLoader productoMarcaLoader;
 	
 	@Override
 	public void run(final String... args) throws Exception {
-		IRepositoryLoader[] loaders = {empresaLoader, marcaLoader, productoLoader, promocionLoader};
-		IRelacionableRepositoryLoader[] relacionableLoaders = {marcaFamiliaLoader, productoMarcaLoader};
-		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, marcaPromocionLoader, productoPromocionLoader};
+		IRepositoryLoader[] loaders = {empresaLoader, centroLoader, familiaLoader, marcaLoader, productoLoader, promocionLoader};
+		IRelacionableRepositoryLoader[] relacionableLoaders = {productoFamiliaLoader, productoMarcaLoader};
+		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, familiaPromocionLoader, marcaPromocionLoader, productoPromocionLoader};
 		deleteRepositories(loaders);
 		deletePromociones(promocionLoaders);
 		deleteRelaciones(relacionableLoaders);

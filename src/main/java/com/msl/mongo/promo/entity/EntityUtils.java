@@ -19,6 +19,10 @@ public class EntityUtils {
 	    }
 		return count;
 	}
+	
+	public static <T> List<Relacionable> toRelacionable(final Stream<T> list) {
+		return list.map(x -> (Relacionable) x).collect(Collectors.toList());
+	}
 
 	public static <T> List<Relacionable> toRelacionable(final List<T> list) {
 		return list.parallelStream().map(x -> (Relacionable) x).collect(Collectors.toList());
@@ -30,6 +34,10 @@ public class EntityUtils {
 	
 	public static <T> Iterable<Relacionable> toRelacionable(final Iterator<T> entities) {
 		return iteratorToStream(entities, true).map(x -> (Relacionable) x).collect(Collectors.toList());
+	}
+	
+	public static <T> List<RelacionableParent> toRelacionableParent(final Stream<T> list) {
+		return list.map(x -> (RelacionableParent) x).collect(Collectors.toList());
 	}
 	
 	public static <T> List<RelacionableParent> toRelacionableParent(final List<T> list) {
