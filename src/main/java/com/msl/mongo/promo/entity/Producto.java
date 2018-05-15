@@ -10,26 +10,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="producto")
 public class Producto implements Promocionable,Relacionable{
-	
 	@Id
-    public String id;
-	
+	public String id;
+
 	@Indexed
 	public String referencia;
-	
+
 	public String name;
-	
-//	@Relations(edges = ProductoPromocion.class, lazy = true)
+
+	// @Relations(edges = ProductoPromocion.class, lazy = true)
 	@DBRef
 	private List<Promocion> promociones;
-	
-//	@Relations(edges = ProductoMarca.class, lazy = true)
+
+	// @Relations(edges = ProductoMarca.class, lazy = true)
 	@DBRef
 	private Marca marca;
 	
 	@DBRef
 	private Familia familia;
 	
+	@DBRef
+	private Centro centro;
+
 	public Producto(String referencia, String name) {
 		super();
 		this.referencia = referencia;
@@ -67,6 +69,7 @@ public class Producto implements Promocionable,Relacionable{
 	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
+
 	
 	public Marca getMarca() {
 		return marca;
@@ -75,13 +78,21 @@ public class Producto implements Promocionable,Relacionable{
 	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
-	
-    public Familia getFamilia() {
+
+	public Familia getFamilia() {
 		return familia;
 	}
 
 	public void setFamilia(Familia familia) {
 		this.familia = familia;
+	}
+
+	public Centro getCentro() {
+		return centro;
+	}
+
+	public void setCentro(Centro centro) {
+		this.centro = centro;
 	}
 
 	@Override
@@ -93,5 +104,5 @@ public class Producto implements Promocionable,Relacionable{
                 append("promociones", promociones).
           	    append("marca", marca).
         		toString();
-    }
+	}
 }

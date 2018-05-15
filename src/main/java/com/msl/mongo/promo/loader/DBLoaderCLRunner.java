@@ -1,11 +1,15 @@
 package com.msl.mongo.promo.loader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan("com.msl")
 public class DBLoaderCLRunner implements CommandLineRunner {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DBLoaderCLRunner.class.getName());
 	
 	@Autowired
 	EmpresaLoader empresaLoader;
@@ -26,31 +30,40 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	PromocionLoader promocionLoader;
 	
 	@Autowired
+	CentroEmpresaRelationsLoader centroEmpresaLoader;
+
+	@Autowired
+	ProductoMarcaRelationsLoader productoMarcaLoader;
+	
+	@Autowired
+	ProductoCentroRelationsLoader productoCentroLoader;
+	
+	@Autowired
+	ProductoFamiliaRelationsLoader productoFamiliaLoader;
+	
+	@Autowired
 	EmpresaPromocionRelationsLoader empresaPromocionLoader;
 	
 	@Autowired
 	CentroPromocionRelationsLoader centroPromocionLoader;
 	
 	@Autowired
-	MarcaPromocionRelationsLoader familiaPromocionLoader;
-	
-	@Autowired
-	FamiliaPromocionRelationsLoader marcaPromocionLoader;
-	
+	FamiliaPromocionRelationsLoader familiaPromocionLoader;
+
 	@Autowired
 	ProductoPromocionRelationsLoader productoPromocionLoader;
-	
+
 	@Autowired
-	ProductoFamiliaRelationsLoader productoFamiliaLoader;
+	MarcaPromocionRelationsLoader marcaPromocionLoader;
 	
-	@Autowired
-	ProductoMarcaRelationsLoader productoMarcaLoader;
+
+
 	
 	@Override
 	public void run(final String... args) throws Exception {
 		IRepositoryLoader[] loaders = {empresaLoader, centroLoader, familiaLoader, marcaLoader, productoLoader, promocionLoader};
-		IRelacionableRepositoryLoader[] relacionableLoaders = {productoFamiliaLoader, productoMarcaLoader};
 		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, familiaPromocionLoader, marcaPromocionLoader, productoPromocionLoader};
+		IRelacionableRepositoryLoader[] relacionableLoaders = {centroEmpresaLoader, productoCentroLoader, productoMarcaLoader};
 		deleteRepositories(loaders);
 		deletePromociones(promocionLoaders);
 		deleteRelaciones(relacionableLoaders);
@@ -61,42 +74,42 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	
 	private void deleteRepositories(IRepositoryLoader[] loaders) {
 		for (IRepositoryLoader loader : loaders) {
-			System.out.println("Borrando datos sobre " + loader);
+			logger.debug("Borrando datos sobre " + loader);
 			loader.deleteAll();
 		}
 	}
 	
 	private void loadRepositories(IRepositoryLoader[] loaders) {
 		for (IRepositoryLoader loader : loaders) {
-			System.out.println("Cargando datos sobre " + loader);
+			logger.debug("Cargando datos sobre " + loader);
 			loader.load();
 		}
 	}
 	
 	private void deleteRelaciones(IRelacionableRepositoryLoader[] loaders) {
 		for (IRelacionableRepositoryLoader loader : loaders) {
-			System.out.println("Borrando relaciones sobre " + loader);
+			logger.debug("Borrando relaciones sobre " + loader);
 			loader.deleteRelaciones();
 		}
 	}
 	
 	private void loadRelaciones(IRelacionableRepositoryLoader[] loaders) {
 		for (IRelacionableRepositoryLoader loader : loaders) {
-			System.out.println("Cargando relaciones sobre " + loader);
+			logger.debug("Cargando relaciones sobre " + loader);
 			loader.loadRelaciones();
 		}
 	}
 	
 	private void deletePromociones(IPromocionableRepositoryLoader[] loaders) {
 		for (IPromocionableRepositoryLoader loader : loaders) {
-			System.out.println("Borrado promociones de " + loader);
+			logger.debug("Borrado promociones de " + loader);
 			loader.deletePromociones();
 		}
 	}
 	
 	private void loadPromociones(IPromocionableRepositoryLoader[] loaders) {
 		for (IPromocionableRepositoryLoader loader : loaders) {
-			System.out.println("Cargando promociones sobre " + loader);
+			logger.debug("Cargando promociones sobre " + loader);
 			loader.loadPromociones();
 		}
 	}

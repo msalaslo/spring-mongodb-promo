@@ -1,6 +1,7 @@
 package com.msl.mongo.promo.loader;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,20 @@ public class FamiliaLoader implements IRepositoryLoader{
 	    repository.deleteAll();
 	}
 
-	public void load() {    
-	    List<Familia> createFamilias = createFamilias(RepositoryConfig.NUM_FAMILIAS);
-	    repository.saveAll(createFamilias);
+	@Override
+	public void load() {
+		Collection<Familia> createFamilias = createFamilias(RepositoryConfig.NUM_FAMILIAS);
+		repository.saveAll(createFamilias);
 	}
-	
-	private static List<Familia> createFamilias(int numFamilias) {
+
+	private static Collection<Familia> createFamilias(int numFamilias) {
 		String namePrefix = "familia";
-		List<Familia> marcas = new ArrayList<Familia>();
-		for(int cfamilia = 0; cfamilia < numFamilias; cfamilia++){
-			String cfamiliaStr = String.format("%03d",Integer.valueOf(cfamilia));
-			Familia marca = new Familia(cfamiliaStr, namePrefix + cfamilia);
-			marcas.add(marca);
+		List<Familia> familias = new ArrayList<Familia>();
+		for (int cfamilia = 0; cfamilia < numFamilias; cfamilia++) {
+			String cfamiliaStr = String.format("%03d", Integer.valueOf(cfamilia));
+			Familia familia = new Familia(cfamiliaStr, namePrefix + cfamilia);
+			familias.add(familia);
 		}
-	    return marcas;
-	  }
+		return familias;
+	}
 }

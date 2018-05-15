@@ -15,8 +15,8 @@ import com.msl.mongo.promo.repository.PromocionRepository;
 
 public abstract class AbstractPromocionableRepositoryLoader implements IPromocionableRepositoryLoader {
 
-	private static final Logger logger = LoggerFactory.getLogger(AbstractPromocionableRepositoryLoader.class);
-
+	private static final Logger logger = LoggerFactory.getLogger(AbstractPromocionableRepositoryLoader.class);	
+	
 	@Autowired
 	private PromocionRepository promocionRepo;
 
@@ -26,7 +26,7 @@ public abstract class AbstractPromocionableRepositoryLoader implements IPromocio
 			Promocion promocion = randomPromocion();
 			logger.debug("Asociando la promocion " + promocion + " al promocionable " + promocionable );
 			this.save(promocionable, promocion);		
-		}
+		}			
 	}
 	
 	public Promocion randomPromocion() {

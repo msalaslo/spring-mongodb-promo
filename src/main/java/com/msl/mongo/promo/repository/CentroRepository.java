@@ -9,5 +9,5 @@ import com.msl.mongo.promo.entity.Promocion;
 
 public interface CentroRepository extends MongoRepository<Centro,String> {
 	public List<Centro> findByCentroo(String centroo);
-	List<Promocion> findPromocionesByCentroo(String centroo);
+	List<Promocion> findPromocionesByCcentroo(String centroo);
 }
