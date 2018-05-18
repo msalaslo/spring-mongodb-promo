@@ -25,7 +25,7 @@ public class CentroEmpresaRelationsLoader extends AbstractRelacionableRepository
 		
 	@Override
 	public void loadRelaciones() {
-		super.loadRelaciones(EntityUtils.toRelacionable(empresaRepo.findAll()), EntityUtils.toRelacionableParent(centroRepo.findAll()));
+		super.loadRelaciones(EntityUtils.toRelacionable(centroRepo.findAll()), EntityUtils.toRelacionableParent(empresaRepo.findAll()));
 	}
 	
 	@Override

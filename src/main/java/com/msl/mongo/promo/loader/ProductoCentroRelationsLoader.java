@@ -24,7 +24,7 @@ public class ProductoCentroRelationsLoader extends AbstractRelacionableRepositor
 		
 	@Override
 	public void loadRelaciones() {
-		super.loadRelaciones(EntityUtils.toRelacionable(centroRepo.findAll()), EntityUtils.toRelacionableParent(productoRepo.findAll()));
+		super.loadRelaciones(EntityUtils.toRelacionable(productoRepo.findAll()), EntityUtils.toRelacionableParent(centroRepo.findAll()));
 	}
 	
 	@Override
