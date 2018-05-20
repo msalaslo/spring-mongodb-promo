@@ -5,41 +5,41 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.msl.mongo.promo.entity.Familia;
+import com.msl.mongo.promo.entity.Centro;
 import com.msl.mongo.promo.entity.Promocion;
-import com.msl.mongo.promo.repository.FamiliaRepository;
+import com.msl.mongo.promo.repository.CentroRepository;
 
 @Service
-public class FamiliaService {
+public class CentroService {
 
 	@Autowired
-	FamiliaRepository repository;
+	CentroRepository repository;
 	
-    public Optional<Familia> findByid(String id){
+    public Optional<Centro> findByid(String id){
     	return repository.findById(id);
     }
     
-    public Iterable<Familia> findByCfamilia(String cfamilia){
-    	return repository.findByCfamilia(cfamilia);
+    public Iterable<Centro> findByName(String name){
+    	return repository.findByName(name);
     }
     
-    public Iterable<Familia> findByName(String name){
-    	return repository.findByName(name);
+    public Iterable<Centro> findByCentroo(String centroo){
+    	return repository.findByCentroo(centroo);
     }
     
     public Iterable<Promocion> findPromocionesById(String id){
     	return repository.findPromocionesById(id);
     }
     
-    public Iterable<Promocion> findPromocionesByCfamilia(String cfamilia){
-    	return repository.findPromocionesByCfamilia(cfamilia);
+    public Iterable<Promocion> findPromocionesByCentroo(String centroo){
+    	return repository.findPromocionesByCentroo(centroo);
     }
     
     public Iterable<Promocion> findPromocionesByName(String name){
     	return repository.findPromocionesByName(name);
     }
 
-	public Familia save(Familia product) {
+	public Centro save(Centro product) {
 		return repository.save(product);
 	}
 }

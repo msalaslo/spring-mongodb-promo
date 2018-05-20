@@ -1,6 +1,6 @@
 package com.msl.mongo.promo.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -8,8 +8,10 @@ import com.msl.mongo.promo.entity.Marca;
 import com.msl.mongo.promo.entity.Promocion;
 
 public interface MarcaRepository extends MongoRepository<Marca,String> {
-	public List<Marca> findByCmarmuma(String cmarmuma);
-	public List<Marca> findByName(String name);
-	List<Promocion> findPromocionesById(String id);
-	List<Promocion> findPromocionesByCmarmuma(String cmarmuma);
+	public Optional<Marca> findById(String id);
+	public Iterable<Marca> findByCmarmuma(String cmarmuma);
+	public Iterable<Marca> findByName(String name);
+	public Iterable<Promocion> findPromocionesById(String id);
+	public Iterable<Promocion> findPromocionesByName(String name);
+	public Iterable<Promocion> findPromocionesByCmarmuma(String cmarmuma);
 }

@@ -27,6 +27,10 @@ public class ProductoService {
     	return repository.findByReferencia(referencia);
     }
     
+    public Producto findByName(String name){
+    	return repository.findByName(name);
+    }
+    
     public Iterable<Promocion> findPromocionesById(String id){
     	return repository.findPromocionesById(id);
     }

@@ -5,41 +5,41 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.msl.mongo.promo.entity.Familia;
+import com.msl.mongo.promo.entity.Empresa;
 import com.msl.mongo.promo.entity.Promocion;
-import com.msl.mongo.promo.repository.FamiliaRepository;
+import com.msl.mongo.promo.repository.EmpresaRepository;
 
 @Service
-public class FamiliaService {
+public class EmpresaService {
 
 	@Autowired
-	FamiliaRepository repository;
+	EmpresaRepository repository;
 	
-    public Optional<Familia> findByid(String id){
+    public Optional<Empresa> findByid(String id){
     	return repository.findById(id);
     }
     
-    public Iterable<Familia> findByCfamilia(String cfamilia){
-    	return repository.findByCfamilia(cfamilia);
+    public Iterable<Empresa> findByName(String name){
+    	return repository.findByName(name);
     }
     
-    public Iterable<Familia> findByName(String name){
-    	return repository.findByName(name);
+    public Iterable<Empresa> findByCempresa(String cempresa){
+    	return repository.findByCempresa(cempresa);
     }
     
     public Iterable<Promocion> findPromocionesById(String id){
     	return repository.findPromocionesById(id);
     }
     
-    public Iterable<Promocion> findPromocionesByCfamilia(String cfamilia){
-    	return repository.findPromocionesByCfamilia(cfamilia);
+    public Iterable<Promocion> findPromocionesByCempresa(String cempresa){
+    	return repository.findPromocionesByCempresa(cempresa);
     }
     
     public Iterable<Promocion> findPromocionesByName(String name){
     	return repository.findPromocionesByName(name);
     }
 
-	public Familia save(Familia product) {
+	public Empresa save(Empresa product) {
 		return repository.save(product);
 	}
 }
