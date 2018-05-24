@@ -21,8 +21,8 @@ public class SpringDataMongodbPromoApplication {
 	public static void main(final String... args) {
 		logger.info("Iniciando aplicacion" + name);
 //		Object[] runner = new Object[] {DBLoaderCLRunner.class};
-//		SpringApplication.run(DBLoaderCLRunner.class, args);
-		SpringApplication.run(SpringDataMongodbPromoApplication.class, args);
+		SpringApplication.run(DBLoaderCLRunner.class, args);
+//		SpringApplication.run(SpringDataMongodbPromoApplication.class, args);
 //		System.exit(SpringApplication.exit(SpringApplication.run(runner, args)));
 		logger.info("Aplicacion " + name + " iniciada");
 	}

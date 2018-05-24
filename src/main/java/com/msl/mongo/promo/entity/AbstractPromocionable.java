@@ -9,8 +9,8 @@ public abstract class AbstractPromocionable implements Promocionable {
 	private String name;
 	
 	// @Relations(edges = ProductoPromocion.class, lazy = true)
-//	@DBRef
-//	private List<Promocion> promociones;
+	@DBRef
+	private List<Promocion> promociones;
 
 	public String getName() {
 		return name;
@@ -20,15 +20,15 @@ public abstract class AbstractPromocionable implements Promocionable {
 		this.name = name;
 	}
 
-//	public List<Promocion> getPromociones() {
-//		return promociones;
-//	}
-//
-//	public void setPromociones(List<Promocion> promociones) {
-//		this.promociones = promociones;
-//	}
-	
-	public abstract List<Promocion> getPromociones();
+	public List<Promocion> getPromociones() {
+		return promociones;
+	}
 
-	public abstract void setPromociones(List<Promocion> promociones);
+	public void setPromociones(List<Promocion> promociones) {
+		this.promociones = promociones;
+	}
+	
+//	public abstract List<Promocion> getPromociones();
+//
+//	public abstract void setPromociones(List<Promocion> promociones);
 }

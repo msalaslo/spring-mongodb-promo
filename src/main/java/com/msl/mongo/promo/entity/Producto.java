@@ -23,13 +23,13 @@ public class Producto implements Promocionable,Relacionable{
 	private List<Promocion> promociones;
 
 	// @Relations(edges = ProductoMarca.class, lazy = true)
-	@DBRef
+//	@DBRef
 	private Marca marca;
 	
-	@DBRef
+//	@DBRef
 	private Familia familia;
 	
-	@DBRef
+//	@DBRef
 	private Centro centro;
 
 	public Producto(String referencia, String name) {

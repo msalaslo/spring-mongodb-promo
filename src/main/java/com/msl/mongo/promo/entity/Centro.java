@@ -16,19 +16,19 @@ public class Centro extends AbstractPromocionable implements Relacionable,Relaci
 	@Indexed
 	public String centroo;
 		
-	@DBRef
-	private List<Promocion> promociones;
-
+//	@DBRef
+//	private List<Promocion> promociones;
+//
+//	
+//	public List<Promocion> getPromociones() {
+//		return promociones;
+//	}
+//
+//	public void setPromociones(List<Promocion> promociones) {
+//		this.promociones = promociones;
+//	}
 	
-	public List<Promocion> getPromociones() {
-		return promociones;
-	}
-
-	public void setPromociones(List<Promocion> promociones) {
-		this.promociones = promociones;
-	}
-	
-	@DBRef
+//	@DBRef
 	private Empresa empresa;
 	
 	public Centro(String centroo, String name) {
