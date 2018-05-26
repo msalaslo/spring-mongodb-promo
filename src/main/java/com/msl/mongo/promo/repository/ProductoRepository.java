@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import com.msl.mongo.promo.entity.Producto;
 import com.msl.mongo.promo.entity.Promocion;
@@ -18,7 +18,6 @@ public interface ProductoRepository extends MongoRepository<Producto,String> {
 	Iterable<Promocion> findPromocionesById(String id);
 	Iterable<Promocion> findPromocionesByName(String name);
 	Iterable<Promocion> findPromocionesByReferencia(String referencia);
-//	@Query("select p from producto p")
-	Stream<Producto> streamAllPaged(Pageable pageable);
-	Stream<Producto> streamAll();
+	@Query("{}")
+	public Stream<Producto> findAllAsStream();
 }
